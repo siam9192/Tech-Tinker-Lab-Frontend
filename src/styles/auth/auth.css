@@ -1,0 +1,6 @@
+.auth-bg {
+    background: url('../../../public/images/auth-bg.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh
+}
