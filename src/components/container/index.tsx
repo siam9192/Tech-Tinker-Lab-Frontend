@@ -7,8 +7,7 @@ type IContainer = {
 
 const Container = ({ children, className }: IContainer) => {
   return (
-    <div
-     className={`container mx-auto lg:px-0 px-2 ${className}`}>
+    <div className={`container mx-auto lg:px-0 px-2 ${className}`}>
       {children}
     </div>
   );

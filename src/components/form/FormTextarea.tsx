@@ -37,7 +37,7 @@ const FormTextArea = ({
             <textarea
               className={
                 className ||
-                'w-full mt-1 p-2 border-2  dark:text-slate-100 dark:bg-transparent border-gray-500 dark:border-slate-200 dark:border-opacity-35  font-medium'
+                'w-full mt-1 px-2 py-3  bg-gray-100  dark:text-slate-100 dark:bg-dark-light dark:bg-transparent dark:border-opacity-35  font-medium outline-primary-color outline-2 h-52 resize-none'
               }
               {...field}
               value={field.value || ''}

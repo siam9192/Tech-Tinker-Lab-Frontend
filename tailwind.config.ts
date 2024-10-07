@@ -15,7 +15,8 @@ const config: Config = {
        "button-color":"#53d769",
        "info-color":"#2e4b9c",
        "dark-mode":'#1e1f20',
-       "dark-light":'#1D232A'
+       "dark-light":'#1D232A',
+       "modal":'rgb(55 65 81 / 0.7)'
       },
       fontFamily:{
         primary:'"Afacad Flux", sans-serif;',
@@ -23,6 +24,6 @@ const config: Config = {
       }
     },
   },
-  plugins: [],
+  plugins: [ require('daisyui')],
 };
 export default config;

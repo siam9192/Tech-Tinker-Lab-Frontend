@@ -17,39 +17,32 @@ const FormInputWithIcon = (props: TInputProps) => {
   const {
     formState: { errors },
   } = useFormContext();
-   
-  const {
-    type,
-    name,
-    placeholder
-  } = props
+
+  const { type, name, placeholder } = props;
 
   const error = errors[name]?.message?.toString();
-  
-  
-  
+
   return (
     <Controller
       name={name}
       render={({ field }) => {
         return (
-        <div>
-          <div className={`flex items-center gap-2 pl-4 px-1 bg-gray-100  rounded-md `}>
-          <span className='text-2xl font-medium '>
-           {
-             <props.icon/>
-           }
-          </span>
-          <input  
-          {...field}
-          value={field.value||''}
-          id={name}
-              type={type || 'text'}
-              placeholder={placeholder || ''}
-               className='w-full   border-none outline-none bg-transparent placeholder:font-medium pl-2 py-4'/>
-      </div>
-      <p className='text-red-600 mt-1'>{error}</p>
-        </div>
+          <div>
+            <div
+              className={`flex items-center gap-2 pl-4 px-1 bg-gray-100  rounded-md `}
+            >
+              <span className="text-2xl font-medium ">{<props.icon />}</span>
+              <input
+                {...field}
+                value={field.value || ''}
+                id={name}
+                type={type || 'text'}
+                placeholder={placeholder || ''}
+                className="w-full   border-none outline-none bg-transparent placeholder:font-medium pl-2 py-4"
+              />
+            </div>
+            <p className="text-red-600 mt-1">{error}</p>
+          </div>
         );
       }}
     />

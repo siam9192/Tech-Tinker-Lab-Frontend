@@ -1,17 +1,42 @@
-import Link from 'next/link'
-import React from 'react'
+'use client';
+import { default_profile_photo } from '@/utils/constant';
+import { useRouter } from 'next/navigation';
+
+import React from 'react';
 interface IProfileImage {
-    image:string,
-    name:string
-} 
-const ProfileImage = () => {
-  return (
-   <Link href='/profile'>
-    <div className='flex items-center gap-1'>
-        <img className='size-14 rounded-full' src="https://t4.ftcdn.net/jpg/03/26/98/51/360_F_326985142_1aaKcEjMQW6ULp6oI9MYuv8lN9f8sFmj.jpg" alt="" />
-    </div>
-   </Link>
-  )
+  image_url: string | null;
+  username?: string;
+  isVerified?: boolean;
+  href?: string;
 }
 
-export default ProfileImage
+const ProfileImage = ({
+  image_url,
+  username,
+  isVerified,
+  href,
+}: IProfileImage) => {
+  const router = useRouter();
+  const handelClick = () => {
+    if (href) {
+      router.push(href);
+    }
+  };
+  return (
+    <div onClick={handelClick} className="flex items-center gap-1 relative">
+      <img
+        className="size-12 rounded-full border p-1"
+        src={image_url || default_profile_photo}
+        alt=""
+      />
+      {username && <h4>{username}</h4>}
+      <img
+        className=" h-4 w-6 absolute bottom-2 -right-2"
+        src="/images/verified.png"
+        alt=""
+      />
+    </div>
+  );
+};
+
+export default ProfileImage;

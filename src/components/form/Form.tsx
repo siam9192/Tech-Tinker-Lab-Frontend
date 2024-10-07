@@ -15,7 +15,7 @@ type TFormConfig = {
 type TFormProps = {
   onSubmit: SubmitHandler<FieldValues>;
   reset?: boolean;
-  id?:string,
+  id?: string;
   className?: string;
   children: React.ReactNode;
 } & TFormConfig;
@@ -50,7 +50,11 @@ const Form = ({
 
   return (
     <FormProvider {...methods}>
-      <form id={id} className={className} onSubmit={methods.handleSubmit(submit)}>
+      <form
+        id={id}
+        className={className}
+        onSubmit={methods.handleSubmit(submit)}
+      >
         {children}
       </form>
     </FormProvider>
