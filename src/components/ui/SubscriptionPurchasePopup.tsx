@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import React, { useState } from 'react';
 import Modal from '../modal/Modal';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
@@ -12,12 +12,11 @@ function SubscriptionPurchasePopup() {
   const isOpen = useAppSelector(
     (state) => state.toggle.isSubscriptionPurchaseModalOpen,
   );
-  const pathname = usePathname()
-  
-  const dispatch = useAppDispatch()
-  
+  const pathname = usePathname();
+
+  const dispatch = useAppDispatch();
+
   let redirect_url = `https://tech-tinker-lab-fo.vercel.app/${pathname}`;
-  
 
   const packageServices = standardPackage.services;
 
@@ -27,16 +26,15 @@ function SubscriptionPurchasePopup() {
       redirect_url,
     };
     const data = await subscribePackage(subscriptionData);
-   
-      window.location.href = data.checkout_url;
-   
+
+    window.location.href = data.checkout_url;
   };
-  const closeModal = ()=>{
-    dispatch(toggleSubscriptionPurchaseModal(false))
-  }
+  const closeModal = () => {
+    dispatch(toggleSubscriptionPurchaseModal(false));
+  };
 
   return (
-    <Modal closeFn={closeModal}  isOpen={isOpen}>
+    <Modal closeFn={closeModal} isOpen={isOpen}>
       <div
         onClick={(e) => e.stopPropagation()}
         className=" bg-white dark:bg-dark-mode w-full md:w-1/2 lg:w-1/4 p-10 rounded-lg"

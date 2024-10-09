@@ -13,22 +13,20 @@ import { CiMail } from 'react-icons/ci';
 import { useDispatch } from 'react-redux';
 
 interface ISignUpForm {
-  redirect_url:string|undefined
-  }
-  
+  redirect_url: string | undefined;
+}
 
-function SignInForm({redirect_url}:ISignUpForm) {
+function SignInForm({ redirect_url }: ISignUpForm) {
   const [error, setError] = useState('');
 
   const router = useRouter();
   const dispatch = useDispatch();
-  
 
   const handelSubmit = async (values: FieldValues) => {
     // Reset error message
     setError('');
     openLoadingLine();
-    
+
     try {
       await signInUser(values);
       if (redirect_url) {

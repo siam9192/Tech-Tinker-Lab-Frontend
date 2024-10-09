@@ -9,7 +9,6 @@ import { deletePost } from '@/services/postService';
 import EditPost from '@/sections/dashboard/my-posts/EditPost';
 import PostAnalysisModal from '@/sub-compomnents/dashboard/my-posts/PostAnalysisModal';
 
-
 interface IPostCardProps {
   post: IPost;
 }
@@ -70,7 +69,7 @@ function MyPostCard({ post }: IPostCardProps) {
       </div>
       <div className="mt-3 flex justify-end">
         <div className="flex items-center gap-2">
-        <PostAnalysisModal postId={post._id}/>
+          <PostAnalysisModal postId={post._id} />
           <EditPost postId={post._id} />
 
           {/* Delete button */}

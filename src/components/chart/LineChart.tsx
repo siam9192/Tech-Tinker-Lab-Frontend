@@ -11,32 +11,38 @@ import {
   Legend,
 } from 'chart.js';
 
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
-
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+);
 
 type TDataSet = {
-    label:string,
-    data:number[],
-    borderColor:string,
-    fill:boolean,
-    tension:number
-}
+  label: string;
+  data: number[];
+  borderColor: string;
+  fill: boolean;
+  tension: number;
+};
 type TOptions = {
-    title:string,
-    scaleXText?:string,
-    scaleYText?:string
-}
+  title: string;
+  scaleXText?: string;
+  scaleYText?: string;
+};
 
 interface ILineChartProps {
- data:{
- labels:Array<string|number>,
- datasets:TDataSet[]
- },
- options:TOptions
+  data: {
+    labels: Array<string | number>;
+    datasets: TDataSet[];
+  };
+  options: TOptions;
 }
 
-const LineChart = ({data,options:optionsData}:ILineChartProps) => {
-  
+const LineChart = ({ data, options: optionsData }: ILineChartProps) => {
   const options = {
     responsive: true,
     plugins: {
@@ -48,7 +54,6 @@ const LineChart = ({data,options:optionsData}:ILineChartProps) => {
         text: optionsData.title,
       },
     },
-  
   };
 
   return <Line data={data} options={options as any} />;

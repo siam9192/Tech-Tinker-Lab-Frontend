@@ -15,7 +15,7 @@ function LogoutButton({ successFn }: ILogoutButtonProps) {
   return (
     <button
       onClick={logout}
-      className="text-3xl text-white p-3 bg-[#fc927d] rounded-full"
+      className="text-3xl  text-black p-3 bg-[#fc927d] rounded-full"
     >
       <BiLogOutCircle />
     </button>

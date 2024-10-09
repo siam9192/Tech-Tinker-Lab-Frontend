@@ -2,9 +2,7 @@
 import Link from 'next/link';
 import React from 'react';
 
-
 const NotFound = () => {
- 
   return (
     <div className="h-[100vh]   flex justify-center items-center flex-col  p-10 md:py-20 ">
       <img className=" w-1/2 md:w-1/3 hi" src="/images/not-found.png" alt="" />

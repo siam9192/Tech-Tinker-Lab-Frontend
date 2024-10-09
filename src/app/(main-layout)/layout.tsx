@@ -17,12 +17,12 @@ export default function RootLayout({
       <div className="col-span-2 hidden lg:block">
         <Sidebar />
       </div>
-      <div className="col-span-10  bg-[#f7f7f7] dark:bg-dark-mode lg:rounded-l-3xl h-screen overflow-y-auto">
+      <div
+        id="home-container"
+        className="col-span-10  bg-[#f7f7f7] dark:bg-dark-mode lg:rounded-l-3xl h-screen overflow-y-auto overflow-x-hidden"
+      >
         <Header />
-        <div className="p-5 lg:p-10">
-          {children}
-       
-        </div>
+        <div className="p-5 lg:p-10 ">{children}</div>
       </div>
     </div>
   );

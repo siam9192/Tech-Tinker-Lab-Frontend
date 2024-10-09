@@ -27,11 +27,14 @@ const Sidebar = () => {
 
   return (
     <section className="flex flex-col justify-between p-10 h-full ">
-      <img
-        src="/images/TechTinkerLabLogo.jpg"
-        className="size-20 rounded-full"
-        alt=""
-      />
+      <div className="flex items-center gap-2">
+        <img
+          src="/images/TechTinkerLabLogo.jpg"
+          className="size-20 rounded-full"
+          alt=""
+        />
+        <h1 className="text-2xl text-wrap  font-bold">TechTinker Lab</h1>
+      </div>
       <div className="space-y-4">
         {routes.map((route) => (
           <Link href={route.href} key={route.href} className="block">
@@ -41,7 +44,7 @@ const Sidebar = () => {
               >
                 {<route.icon />}
               </button>
-              <h2 className="text-xl font-semibold text-white">
+              <h2 className="text-xl font-semibold text-black">
                 {route.title}
               </h2>
             </div>

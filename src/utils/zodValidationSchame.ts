@@ -29,20 +29,23 @@ const postFormValidation = z.object({
   title: z.string({ required_error: 'Title is Required' }),
 });
 
-
 const editProfileValidation = z.object({
   name: z.object({
     first_name: z.string({ required_error: 'First name is required' }),
     last_name: z.string({ required_error: 'Last name is required' }),
   }),
-  about:z.string().optional(),
-  profession:z.string().optional()
-})
+  about: z.string().optional(),
+  profession: z.string().optional(),
+});
+
+export const createCommentValidation = z.object({
+  comment: z.string({ required_error: 'Write Something..' }),
+});
 
 export const ZodValidations = {
   signUpValidation,
   signInValidation,
   postFormValidation,
-  editProfileValidation
+  editProfileValidation,
+  createCommentValidation,
 };
-

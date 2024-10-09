@@ -17,7 +17,7 @@ import { toggleSubscriptionPurchaseModal } from '@/redux/features/toggle.slice';
 import { useRouter } from 'next/navigation';
 
 interface IPostCard {
-  currentUser: IUser|null;
+  currentUser: IUser | null;
   post: IPost;
 }
 
@@ -51,7 +51,10 @@ const PostCard = ({ currentUser, post }: IPostCard) => {
       onClick={handelClick}
       className=" hover:cursor-pointer p-5 bg-white dark:bg-dark-light rounded-lg shadow space-y-5 flex flex-col"
     >
-      <div onClick={(e)=>e.stopPropagation()} className="flex  gap-2 items-center">
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className="flex  gap-2 items-center"
+      >
         <ProfileImage
           image_url={post.author.profile_photo}
           isVerified={post.author.is_verified}

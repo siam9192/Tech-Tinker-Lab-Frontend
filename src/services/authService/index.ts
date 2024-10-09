@@ -39,7 +39,7 @@ export const signInUser = async (userData: FieldValues) => {
 export const getCurrentUser = async () => {
   const accessToken = cookies().get('accessToken')?.value;
   if (accessToken)
-    return jwtDecode(accessToken) as JwtPayload & {id:string, role: TRole };
+    return jwtDecode(accessToken) as JwtPayload & { id: string; role: TRole };
   else return null;
 };
 

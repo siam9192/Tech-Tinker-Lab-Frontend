@@ -1,4 +1,4 @@
-import { JwtPayload } from "jwt-decode";
+import { JwtPayload } from 'jwt-decode';
 
 export interface IUser {
   _id: string;
@@ -21,7 +21,7 @@ export interface IPersonalDetails {
   address: any;
   study: any;
   profession: any;
-  about:string
+  about: string;
   _id: string;
 }
 
@@ -31,8 +31,7 @@ export interface IName {
   _id: string;
 }
 
-
 export interface IUserDecode extends JwtPayload {
-  id:string,
-  role:string
+  id: string;
+  role: string;
 }

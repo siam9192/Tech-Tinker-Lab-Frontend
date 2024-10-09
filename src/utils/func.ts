@@ -1,3 +1,5 @@
+import { TParam } from '@/types/response';
+
 export function formatTimeAgo(timestamp: string) {
   const now = new Date().valueOf();
   const then = new Date(timestamp).valueOf();
@@ -22,3 +24,17 @@ export function formatTimeAgo(timestamp: string) {
 
   return 'just now';
 }
+
+export const formatSearchParam = (params: TParam[]) => {
+  if (typeof params === undefined) {
+    params = [];
+  }
+
+  const searchParam = new URLSearchParams();
+  params?.forEach((item) => {
+    if (item.value) {
+      searchParam.append(item.name, item.value);
+    }
+  });
+  return searchParam.toString();
+};

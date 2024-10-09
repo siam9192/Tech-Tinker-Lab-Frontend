@@ -10,12 +10,13 @@ export const getCurrentUserOverview = async () => {
   }
 };
 
-
-export const getPostOverview = async (postId:string,viewType:string)=>{
+export const getPostOverview = async (postId: string, viewType: string) => {
   try {
-    const { data } = await axiosInstance.get(`/overview/post/${postId}?view_type=${viewType}`);
+    const { data } = await axiosInstance.get(
+      `/overview/post/${postId}?view_type=${viewType}`,
+    );
     return data.data;
   } catch (error: any) {
     throw new Error(error?.response?.data?.message || 'Some this went wrong');
   }
-}
+};

@@ -8,7 +8,7 @@ export type IRoute = {
   icon: IconType;
 };
 
-export interface ILayoutProps  {
+export interface ILayoutProps {
   children: ReactNode;
 }
 

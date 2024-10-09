@@ -8,7 +8,7 @@ function Logo() {
         className="size-10 rounded-full"
         alt=""
       />
-      <h1 className="text-center text-xl font-semibold dark:text-white">
+      <h1 className="text-center text-xl font-semibold dark:text-black">
         TTLAB
       </h1>
     </div>

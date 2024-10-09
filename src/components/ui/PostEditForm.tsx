@@ -38,7 +38,9 @@ const defaultCategory = {
   value: '',
 };
 
-const Select = dynamic(()=>import('@/components/select/Select'),{ssr:false})
+const Select = dynamic(() => import('@/components/select/Select'), {
+  ssr: false,
+});
 
 const PostEditForm = ({ successFn, postId }: IPostCreateForm) => {
   const [thumbnail, setThumbnail] = useState<File | null>(null);

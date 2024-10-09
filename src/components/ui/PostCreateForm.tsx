@@ -34,8 +34,13 @@ const defaultCategory = {
   value: '',
 };
 
-const Select = dynamic(()=>import('@/components/select/Select'),{ssr:false})
-const TextEditor = dynamic(()=>import('@/components/text-editor/TextEditor'),{ssr:false})
+const Select = dynamic(() => import('@/components/select/Select'), {
+  ssr: false,
+});
+const TextEditor = dynamic(
+  () => import('@/components/text-editor/TextEditor'),
+  { ssr: false },
+);
 
 const PostCreateForm = ({ successFn }: IPostCreateForm) => {
   const [thumbnail, setThumbnail] = useState<File | null>(null);
@@ -77,7 +82,7 @@ const PostCreateForm = ({ successFn }: IPostCreateForm) => {
       content: textEditorValue,
       thumbnail: '',
       category,
-      is_premium:isPremium,
+      is_premium: isPremium,
     };
     setIsPending(true);
     try {

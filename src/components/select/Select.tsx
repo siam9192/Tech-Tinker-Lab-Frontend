@@ -44,7 +44,7 @@ const Select = ({ options, onChange, defaultValue }: TSelectProps) => {
           e.stopPropagation();
           setOpenStatus(true);
         }}
-        className=" p-2   border-2 border-opacity-70 border-primary-color rounded-md flex items-center justify-between hover:cursor-pointer select-none "
+        className=" p-2   border-2 border-opacity-70 border-primary-color rounded-md flex items-center justify-between hover:cursor-pointer select-none min-w-52"
       >
         {/* Selected options or default value */}
         <div className="dark:text-white">

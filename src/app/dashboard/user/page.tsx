@@ -12,9 +12,7 @@ async function page() {
   try {
     currentUser = await getCurrentUserData();
     overviewData = await getCurrentUserOverview();
-  } catch (error) {
-
-  }
+  } catch (error) {}
 
   const fullName =
     currentUser?.personal_details.name.first_name +
@@ -31,21 +29,21 @@ async function page() {
           data={{
             title: 'Total Post',
             icon: IoAlbumsOutline,
-            value: overviewData?.total_post||0,
+            value: overviewData?.total_post || 0,
           }}
         />
         <DashboardOverviewCard
           data={{
             title: 'Total Reactions',
             icon: IoAlbumsOutline,
-            value: overviewData?.total_reaction||0,
+            value: overviewData?.total_reaction || 0,
           }}
         />
         <DashboardOverviewCard
           data={{
             title: 'Total Earning',
             icon: RiMoneyDollarCircleLine,
-            value: overviewData?.total_earning||0,
+            value: overviewData?.total_earning || 0,
           }}
         />
         <DashboardOverviewCard

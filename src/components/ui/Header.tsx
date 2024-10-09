@@ -6,19 +6,25 @@ import PostCreateModalOpenButton from './PostCreateModalOpenButton';
 import { getCurrentUserData } from '@/services/authService';
 import { LuLayoutDashboard } from 'react-icons/lu';
 import Link from 'next/link';
+import ResponsiveSidebar from './ResponsiveSidebar';
 
 async function Header() {
   const currentUser = await getCurrentUserData();
 
   return (
-    <header className="px-4 py-6 md:py-8 flex justify-between items-center  bg-white dark:bg-dark-light sticky top-0 shadow rounded-lg z-30">
-      <PostCreateModalOpenButton />
+    <header className="px-4 py-4 md:py-8 flex justify-between items-center  bg-white dark:bg-dark-light sticky top-0 shadow rounded-lg z-30">
+      <div className="flex items-center gap-2">
+        <div className=" lg:hidden">
+          <ResponsiveSidebar />
+        </div>
+        <PostCreateModalOpenButton />
+      </div>
       <div className="flex items-center gap-4">
-        <button className="bg-button-color text-wrap p-2 rounded-full text-3xl relative">
+        <button className="bg-button-color text-wrap p-2 rounded-full text-2xl md:text-3xl relative hidden md:block">
           <AiFillMessage />
           <span className="size-4 rounded-full bg-red-600 absolute right-0 -top-1"></span>
         </button>
-        <button className="bg-button-color text-wrap p-2 rounded-full text-3xl relative">
+        <button className="bg-button-color text-wrap p-2 rounded-full  text-2xl md:text-3xl relative hidden md:block">
           <GoBell />
           <span className="size-4 rounded-full bg-red-600 absolute right-0 -top-1"></span>
         </button>

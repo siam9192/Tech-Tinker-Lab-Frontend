@@ -6,9 +6,9 @@ import Pagination from '@/components/pagination/Pagination';
 async function page() {
   let data;
   try {
-   data = await getCurrentUserPayments()
+    data = await getCurrentUserPayments();
   } catch (error) {
-   return <h1>Something went wrong</h1>
+    return <h1>Something went wrong</h1>;
   }
   const payments = data.data || [];
   const meta = data.meta;

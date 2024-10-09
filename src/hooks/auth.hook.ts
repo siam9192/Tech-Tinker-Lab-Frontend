@@ -5,9 +5,9 @@
 //   registerUser,
 // } from '../services/authService';
 
-import { getCurrentUser, getCurrentUserData } from "@/services/authService";
-import { IUser } from "@/types/user.type";
-import { useQuery } from "@tanstack/react-query";
+import { getCurrentUser, getCurrentUserData } from '@/services/authService';
+import { IUser } from '@/types/user.type';
+import { useQuery } from '@tanstack/react-query';
 
 // export const useUserRegistration = () => {
 //   return useMutation<any, Error, FieldValues>({
@@ -26,15 +26,14 @@ import { useQuery } from "@tanstack/react-query";
 //   });
 // };
 
-
 export const userGetCurrentUserDecode = () => {
   return useQuery<any, Error>({
-    queryFn:async()=>await getCurrentUser()
+    queryFn: async () => await getCurrentUser(),
   });
 };
 
 export const userGetCurrentUserProfile = () => {
-  return useQuery<IUser|null, Error>({
-    queryFn:async()=>await getCurrentUserData()
+  return useQuery<IUser | null, Error>({
+    queryFn: async () => await getCurrentUserData(),
   });
 };

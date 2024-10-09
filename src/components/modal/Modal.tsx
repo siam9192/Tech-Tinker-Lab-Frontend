@@ -5,12 +5,12 @@ import React, { ReactNode } from 'react';
 interface IModalProps {
   isOpen: boolean;
   children: ReactNode;
-  closeFn:()=>void
+  closeFn: () => void;
 }
 
-const Modal = ({ isOpen, children,closeFn }: IModalProps) => {
+const Modal = ({ isOpen, children, closeFn }: IModalProps) => {
   const closeModal = () => {
-   closeFn()
+    closeFn();
   };
   return (
     <div

@@ -1,14 +1,14 @@
-
 import Posts from '@/sections/home/Posts';
 import SearchHeader from '@/sections/home/SearchHeader';
 import React from 'react';
+import { PageProps } from '../../../.next/types/app/layout';
 
-const MainLayoutMainPage = () => {
+const MainLayoutMainPage = ({ searchParams }: PageProps) => {
   return (
-    <div className="space-y-5 p-2 md:p-10">
-      <SearchHeader />
+    <div className="space-y-5">
+      <SearchHeader searchParams={searchParams} />
       <div>
-        <Posts />
+        <Posts searchParams={searchParams} />
       </div>
     </div>
   );

@@ -17,16 +17,14 @@ import { signUpUser } from '@/services/authService';
 import { PageProps } from '../../../.next/types/app/layout';
 
 interface ISignUpForm {
-redirect_url:string|undefined
+  redirect_url: string | undefined;
 }
 
-function SignUpForm({redirect_url}:ISignUpForm) {
+function SignUpForm({ redirect_url }: ISignUpForm) {
   const [error, setError] = useState('');
   const [isOpenSuccessPopup, setIsOpenSuccessPop] = useState(false);
   const router = useRouter();
   const dispatch = useDispatch();
-  
-  
 
   const handelSubmit = async (values: FieldValues) => {
     // Reset error message

@@ -23,18 +23,20 @@ const ProfileImage = ({
     }
   };
   return (
-    <div onClick={handelClick} className="flex items-center gap-1 relative">
-      <img
-        className="size-12 rounded-full border p-1"
-        src={image_url || default_profile_photo}
-        alt=""
-      />
-      {username && <h4>{username}</h4>}
-      <img
-        className=" h-4 w-6 absolute bottom-2 -right-2"
-        src="/images/verified.png"
-        alt=""
-      />
+    <div onClick={handelClick} className="flex items-center gap-2  w-fit">
+      <div className="relative">
+        <img
+          className="size-12 rounded-full border p-1 "
+          src={image_url || default_profile_photo}
+          alt=""
+        />
+        <img
+          className=" h-4 w-6 absolute bottom-2 -right-2"
+          src="/images/verified.png"
+          alt=""
+        />
+      </div>
+      {username && <h4 className="text-xl font-medium">{username}</h4>}
     </div>
   );
 };
