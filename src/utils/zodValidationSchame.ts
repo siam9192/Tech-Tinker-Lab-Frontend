@@ -42,10 +42,28 @@ export const createCommentValidation = z.object({
   comment: z.string({ required_error: 'Write Something..' }),
 });
 
+
+const changePasswordValidation = z.object({
+  current_password: z
+  .string({ required_error: 'Current Password is required' }),
+  new_password: z
+    .string({ required_error: 'New Password is required' })
+    .min(6, 'Password must be at least 6 character'),
+  confirm_password: z
+    .string({ required_error: 'Confirm is required' })
+    .min(6, 'Password must be at least 6 character'),
+})
+
+const commentUpdateValidation =  z.object({
+  comment: z.string({required_error:'Comment is required'}).nonempty('Comment is required')
+});
+
 export const ZodValidations = {
   signUpValidation,
   signInValidation,
   postFormValidation,
   editProfileValidation,
   createCommentValidation,
+  changePasswordValidation,
+  commentUpdateValidation
 };

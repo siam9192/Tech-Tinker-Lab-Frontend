@@ -8,10 +8,12 @@ import { PageProps } from '../../../.next/types/app/layout';
 import { TParam } from '@/types/response';
 import { IPost } from '@/types';
 
+
 const Posts = ({ searchParams }: PageProps) => {
   const [currentUser, setCurrentUser] = useState<IUser | null>(null);
   const [page, setPage] = useState(1);
   const [prevPosts, setPrevPosts] = useState<IPost[]>([]);
+  
   const params: TParam[] = [
     {
       name: 'searchTerm',
@@ -28,15 +30,15 @@ const Posts = ({ searchParams }: PageProps) => {
     {
       name: 'page',
       value: page,
-    },
+    }
   ];
 
   const { data, isLoading, isFetching, refetch } = useGetPostsQuery(params, {
-    pollingInterval: 10000,
+    // pollingInterval: 10000,
   });
   const posts = data?.data || [];
   const meta = data?.meta;
-  const pages = meta?.pages;
+  const pages = meta?.pages||[];
 
   useEffect(() => {
     const container = document.getElementById('home-container');
@@ -44,6 +46,7 @@ const Posts = ({ searchParams }: PageProps) => {
       return;
     }
     const handleScroll = () => {
+    
       if (
         window.innerHeight + window.scrollY >= container.offsetHeight - 50 &&
         (pages?.length || 0) > page &&
@@ -59,22 +62,33 @@ const Posts = ({ searchParams }: PageProps) => {
     return () => {
       container.removeEventListener('scroll', handleScroll);
     };
-  }, [page, isFetching]);
+  }, [page, isFetching,isLoading]);
 
   useEffect(() => {
     getCurrentUserData().then((data) => setCurrentUser(data));
   }, []);
 
   useEffect(() => {
+  if( pages.length >= page ){
     refetch();
+  }
+   
   }, [page]);
-
+  
+  useEffect(()=>{
+        setPage(1)
+        refetch()
+        setPrevPosts([])
+  },[searchParams])
+  
   useEffect(() => {
     if (!isLoading && !isFetching && posts.length) {
       setPrevPosts([...prevPosts, ...posts]);
     }
   }, [isLoading, isFetching]);
-
+useEffect(()=>{ 
+  console.log('Search param changed',searchParams)
+},[searchParams])
   return (
     <section className="py-5">
       {prevPosts.length ? (
@@ -95,7 +109,7 @@ const Posts = ({ searchParams }: PageProps) => {
       ) : (
         <div>
           <img className="mx-auto" src="/images/not-result.png" alt="" />
-          <h1 className="text-xl font-bold text-center">No Result Found</h1>
+          <h1 className="text-xl font-bold text-center dark:text-white">No Result Found</h1>
         </div>
       )}
     </section>

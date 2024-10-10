@@ -1,69 +1,50 @@
+'use client'
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-} from 'chart.js';
+import { Chart as ChartJS, BarElement, CategoryScale, LinearScale, Title, Tooltip, Legend } from 'chart.js';
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-);
+ChartJS.register(BarElement, CategoryScale, LinearScale, Title, Tooltip, Legend);
 
-const BarChart = () => {
+type TDataSet = {
+  label:string,
+  data:number[],
+  backgroundColor:string[],
+  borderColor:string[]
+}
+
+interface IBarChartProps {
+  labels:(string|number)[],
+  dataset:TDataSet
+}
+
+const BarChart = ({labels,dataset}:IBarChartProps) => {
   const data = {
-    labels: Array.from({ length: 31 }, (_, i) => i + 1), // Labels for dates (1 to 31)
+    labels: labels,
     datasets: [
-      {
-        label: 'Readers',
-        data: [
-          0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-          0, 0, 0, 0, 0, 0, 0, 0,
-        ],
-        backgroundColor: '#8884d8',
-      },
-      {
-        label: 'Comments',
-        data: [
-          2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-          0, 0, 0, 0, 0, 0, 0, 0,
-        ],
-        backgroundColor: '#82ca9d',
-      },
-      {
-        label: 'Reactions',
-        data: [
-          2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-          0, 0, 0, 0, 0, 0, 0, 0,
-        ],
-        backgroundColor: '#ff7300',
-      },
+      dataset
     ],
+    
   };
 
   const options = {
     responsive: true,
     plugins: {
       legend: {
+        display: true,
         position: 'top',
       },
-      title: {
-        display: true,
-        text: 'Readers, Comments, and Reactions Per Date',
-      },
+      // title: {
+      //   display: true,
+      //   text: 'Monthly Sales (2023)',
+      // },
     },
   };
 
-  return <Bar data={data} options={options as any} />;
+  return (
+    <div >
+      <Bar data={data} options={options as any} />
+    </div>
+  );
 };
 
 export default BarChart;

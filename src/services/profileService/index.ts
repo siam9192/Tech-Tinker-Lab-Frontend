@@ -38,7 +38,7 @@ export const getProfileFollowings = async (username: string) => {
     );
     return data.data as IUser[];
   } catch (error: any) {
-    console.log(error.response);
+   
     return [];
   }
 };

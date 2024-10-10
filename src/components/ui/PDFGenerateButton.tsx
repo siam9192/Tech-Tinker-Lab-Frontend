@@ -1,12 +1,13 @@
 'use client';
 import React, { useRef } from 'react';
-import jsPDF from 'jspdf';
-import html2canvas from 'html2canvas-pro';
 
 function PDFGenerateButton() {
   const handleDownloadPdf = async () => {
+    if(typeof window === 'undefined'){
+      return
+    }
     const element = document.getElementById('post-content');
-
+    
     if (!element) {
       return;
     }

@@ -1,5 +1,44 @@
 import { JwtPayload } from 'jwt-decode';
 
+export type TAddress = {
+  city: string;
+  state: string;
+  country: string;
+};
+
+export type TStudy = {
+  institute: string;
+  degree?: string;
+  fieldOfStudy?: string;
+  startYear?: number;
+  endYear?: number;
+  status: 'Attending' | 'Graduated' | 'Dropped Out' | 'Completed';
+  description?: string;
+};
+
+
+
+export type TLoginLocation = {
+  city: string;
+  region: string;
+  country: string;
+};
+
+export type TDeviceInfo = {
+  device: string;
+  os?: string;
+  browser?: string;
+};
+
+export type TLoginActivity = {
+  device_info: TDeviceInfo;
+  ip_address: string;
+  location: TLoginLocation;
+  login_date: string;
+};
+
+
+
 export interface IUser {
   _id: string;
   username: string;
@@ -12,6 +51,9 @@ export interface IUser {
   total_follower: number;
   total_following: number;
   is_verified: boolean;
+  is_blocked:boolean,
+  is_deleted:boolean;
+  login_activities:TLoginActivity[]
 }
 
 export interface IPersonalDetails {

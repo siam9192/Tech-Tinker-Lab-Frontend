@@ -7,6 +7,7 @@ import React, { ChangeEvent, useEffect, useState } from 'react';
 import { IoSearchOutline } from 'react-icons/io5';
 import { PageProps } from '../../../.next/types/app/layout';
 import { useRouter } from 'next/navigation';
+import { useQueryClient } from '@tanstack/react-query';
 
 const Select = dynamic(() => import('@/components/select/Select'), {
   ssr: false,
@@ -33,7 +34,6 @@ function SearchHeader({ searchParams }: PageProps) {
   const [fieldValue, setFieldValue] = useState('');
   const router = useRouter();
   const categories = data?.data || [];
-
   const searchTerm = Debounce(fieldValue);
 
   useEffect(() => {
@@ -72,8 +72,9 @@ function SearchHeader({ searchParams }: PageProps) {
         }
       }
     });
-
+   
     router.push(`/?${urlSearchParams.toString()}`);
+    
   }
 
   const handelCategoryChange = (value: string) => {
@@ -84,9 +85,9 @@ function SearchHeader({ searchParams }: PageProps) {
   };
 
   const handelTextInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setTimeout(() => {
+   
       setFieldValue(e.target.value);
-    }, 1000);
+    
   };
 
   return (

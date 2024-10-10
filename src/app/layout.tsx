@@ -13,7 +13,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="light" className="dar">
+    <html lang="en" data-theme="light" className="dark">
       <body className="dark:bg-dark-mode">
         <Provider>{children}</Provider>
       </body>

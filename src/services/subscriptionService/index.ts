@@ -12,3 +12,16 @@ export const subscribePackage = async (subscriptionData: any) => {
     throw new Error(error?.response?.data?.message || 'Some this went wrong');
   }
 };
+
+export const getCurrentUserLatestSubscription = async () => {
+  try {
+    const { data } = await axiosInstance.get(
+      '/subscriptions/latest-subscription/current-user',
+    );
+    return data.data;
+  } catch (error: any) {
+    
+   return null
+  }
+};
+

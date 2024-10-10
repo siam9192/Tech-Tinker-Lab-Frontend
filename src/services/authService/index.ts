@@ -43,9 +43,16 @@ export const getCurrentUser = async () => {
   else return null;
 };
 
-export const userLogout = async () => {
+export const userLogout = async (data:any) => {
+  
+ 
+ try {
+  await axiosInstance.post('/auth/logout',data)
   cookies().delete('accessToken');
   cookies().delete('refreshToken');
+ } catch (error) {
+  
+ }
 };
 
 export const getCurrentUserAccessToken = async () => {
@@ -55,6 +62,15 @@ export const getCurrentUserAccessToken = async () => {
   }
   return null;
 };
+
+export const getNewAccessToken = async () => {
+  const refreshToken = cookies().get('refreshToken')?.value;
+  const {data} = await axiosInstance.get('/auth/refresh-token',{headers:{
+    Authorization:refreshToken
+  }})
+  return data
+};
+
 
 export const getCurrentUserData = async () => {
   try {

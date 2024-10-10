@@ -24,7 +24,7 @@ function PostInfo({ data }: IPostInfoProps) {
   };
 
   return (
-    <section className=" bg-white dark:bg-dark-mode p-5 md:p-10 shadow w-full flex items-center justify-between">
+    <section className=" bg-white dark:bg-dark-light dark:text-white p-5 md:p-10 shadow w-full flex items-center justify-between">
       <PostReaction data={postReactionData} />
       <div>
         <div>

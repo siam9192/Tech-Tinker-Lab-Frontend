@@ -20,7 +20,7 @@ function ResponsiveSidebar() {
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="bg-white w-10/12 h-full "
+            className="bg-white  w-10/12 h-full "
           >
             <Sidebar />
           </div>

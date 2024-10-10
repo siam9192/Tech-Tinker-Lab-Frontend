@@ -1,4 +1,4 @@
-import { getCurrentUserPosts, getPostById } from '@/services/postService';
+import { getCurrentUserPosts, getPostById, getPostForRead } from '@/services/postService';
 import { IPost } from '@/types';
 import { useQuery } from '@tanstack/react-query';
 
@@ -15,3 +15,11 @@ export const useGetPostById = (id: string) => {
     queryFn: async () => await getPostById(id),
   });
 };
+
+
+export const useGetPostForRead = (postId:string)=>{
+  return useQuery<IPost, Error>({
+    queryKey: ['POST-BY-ID'],
+    queryFn: async () => await getPostForRead(postId),
+  });
+}

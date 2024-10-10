@@ -4,12 +4,15 @@ import { IComment } from '@/types/comment.type';
 import { TResponseRedux } from '@/types/response';
 
 export const getPostComments = async (postId: string) => {
+  
   try {
     const { data } = await axiosInstance.get(`/comments/post/${postId}`);
     return data as TResponseRedux<IComment[]>;
   } catch (error: any) {
+    console.log(error)
     return error?.response?.data;
   }
+  
 };
 
 export const postComment = async (commentData: any) => {
@@ -20,6 +23,16 @@ export const postComment = async (commentData: any) => {
     return error?.response?.data;
   }
 };
+
+
+export const updateComment = async (payload:any)=>{
+  try {
+    const { data } = await axiosInstance.patch(`/comments`, payload);
+    return data;
+  } catch (error: any) {
+    return error?.response?.data;
+  }
+}
 
 export const deleteComment = async (commentId:string)=>{
   try {

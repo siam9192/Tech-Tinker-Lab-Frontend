@@ -39,7 +39,7 @@ function CommentCard({ comment, currentUserId, vote_type }: ICommentCardProps) {
       <div className="text-xl font-medium" ref={commentRef}  dangerouslySetInnerHTML={{__html: comment.comment}}></div>
       <div className="flex items-center justify-between">
         <CommentReaction data={reactionData} currentUserVoteType={vote_type} />
-        {currentUserId === author._id && <ManageComment commentId={comment._id}/>}
+        {currentUserId === author._id && <ManageComment comment={comment}/>}
       </div>
     </div>
   );

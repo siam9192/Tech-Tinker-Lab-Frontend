@@ -14,7 +14,8 @@ import { CiMail } from 'react-icons/ci';
 import { LuUser2 } from 'react-icons/lu';
 import { useDispatch } from 'react-redux';
 import { signUpUser } from '@/services/authService';
-import { PageProps } from '../../../.next/types/app/layout';
+import { getActivityInfo } from '@/utils/func';
+
 
 interface ISignUpForm {
   redirect_url: string | undefined;
@@ -34,7 +35,9 @@ function SignUpForm({ redirect_url }: ISignUpForm) {
     if (values.password !== values.confirm_password) {
       return setError('Both password dose not match');
     }
-
+    openLoadingLine();
+    const activity =  await getActivityInfo()
+   
     // User  Registration data
     const userData = {
       personal_details: {
@@ -43,9 +46,10 @@ function SignUpForm({ redirect_url }: ISignUpForm) {
       username: values.username,
       email: values.email,
       password: values.password,
+      activity
     };
 
-    openLoadingLine();
+   
     try {
       const res = await signUpUser(userData);
       if (redirect_url) {
@@ -73,9 +77,6 @@ function SignUpForm({ redirect_url }: ISignUpForm) {
     setIsOpenSuccessPop(false);
   }
 
-  function openSuccessPopup() {
-    setIsOpenSuccessPop(true);
-  }
   return (
     <>
       <Form

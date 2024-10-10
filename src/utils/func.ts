@@ -1,4 +1,5 @@
 import { TParam } from '@/types/response';
+import axios from 'axios';
 
 export function formatTimeAgo(timestamp: string) {
   const now = new Date().valueOf();
@@ -38,3 +39,35 @@ export const formatSearchParam = (params: TParam[]) => {
   });
   return searchParam.toString();
 };
+
+
+export const getActivityInfo = async()=>{
+  var userAgent = navigator.userAgent;
+   
+   let Browser;
+
+  if (userAgent.indexOf("Firefox") > -1) {
+   Browser =  "Mozilla Firefox";
+  } else if (userAgent.indexOf("Chrome") > -1 && userAgent.indexOf("Edg") === -1 && userAgent.indexOf("OPR") === -1) {
+    Browser =  "Google Chrome";
+  } else if (userAgent.indexOf("Safari") > -1 && userAgent.indexOf("Chrome") === -1) {
+    Browser =  "Apple Safari";
+  } else if (userAgent.indexOf("Edg") > -1) {
+    Browser =  "Microsoft Edge";
+  } else if (userAgent.indexOf("OPR") > -1 || userAgent.indexOf("Opera") > -1) {
+   Browser = "Opera";
+  } else if (userAgent.indexOf("Trident") > -1) {
+    Browser = "Internet Explorer";
+  } else {
+    Browser =  "Unknown Browser";
+  }
+   const {data} = await axios.get('https://api.ipify.org/?format=json')
+   const ip_address = data.ip
+  return {
+    browser:Browser,
+    ip_address
+  }
+}
+
+
+

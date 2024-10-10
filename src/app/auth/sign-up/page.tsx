@@ -6,16 +6,16 @@ import { PageProps } from '../../../../.next/types/app/layout';
 const SignUpPage = ({ searchParams }: PageProps) => {
   return (
     <div>
-      <div className="mb-5">
+      <div className="mb-5 dark:text-white">
         <h1 className="text text-4xl font-bold ">Get Started</h1>
         <p>Create your account from here</p>
       </div>
-      <SignUpForm redirect_url={searchParams.redirect_url} />
+      <SignUpForm redirect_url={searchParams.redirect} />
       <div className="mt-2 text-[1.2rem]">
-        <p className="text-center">
+        <p className="text-center dark:text-white">
           {' '}
           Have an account ?{' '}
-          <Link className=" text-info-color font-bold" href="/sign-in">
+          <Link className=" text-info-color font-bold" href="/auth/sign-in">
             Sign in
           </Link>
         </p>

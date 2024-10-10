@@ -4,7 +4,7 @@ import PostAnalysis from '@/sections/dashboard/my-posts/PostAnalysis';
 import React, { useState } from 'react';
 
 function PostAnalysisModal({ postId }: { postId: string }) {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   const closeModal = () => {
     setIsOpen(false);
@@ -21,7 +21,8 @@ function PostAnalysisModal({ postId }: { postId: string }) {
       >
         Analysis
       </button>
-      <Modal isOpen={isOpen} closeFn={closeModal}>
+      {
+        isOpen  && <Modal isOpen={isOpen} closeFn={closeModal}>
         <div
           onClick={(e) => e.stopPropagation()}
           className=" w-full md:w-10/12 bg-white dark:bg-dark-mode  h-[90vh] overflow-y-auto rounded-md shadow  "
@@ -29,6 +30,7 @@ function PostAnalysisModal({ postId }: { postId: string }) {
           {isOpen && <PostAnalysis postId={postId} />}
         </div>
       </Modal>
+      }
     </>
   );
 }

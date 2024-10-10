@@ -15,7 +15,7 @@ const Modal = ({ isOpen, children, closeFn }: IModalProps) => {
   return (
     <div
       onClick={closeModal}
-      className={` bg-gray-700/60  backdrop-blur-sm h-screen w-screen absolute  inset-0 ${isOpen ? 'visible' : 'invisible'}  px-2 lg:px-0 flex justify-center items-center  z-50`}
+      className={` bg-black/40 bg-opacity-0 h-screen w-screen fixed  inset-0 ${isOpen ? 'visible' : 'invisible'}  px-2 lg:px-0 flex justify-center items-center  z-50`}
     >
       {children}
     </div>

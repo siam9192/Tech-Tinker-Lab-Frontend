@@ -7,6 +7,9 @@ import { getCurrentUserData } from '@/services/authService';
 import { LuLayoutDashboard } from 'react-icons/lu';
 import Link from 'next/link';
 import ResponsiveSidebar from './ResponsiveSidebar';
+import dynamic from 'next/dynamic';
+
+const ThemeSwitcher = dynamic(()=>import('@/components/ui/ThemeSwitcher'))
 
 async function Header() {
   const currentUser = await getCurrentUserData();
@@ -17,7 +20,7 @@ async function Header() {
         <div className=" lg:hidden">
           <ResponsiveSidebar />
         </div>
-        <PostCreateModalOpenButton />
+        <PostCreateModalOpenButton isUser={currentUser?true:false} />
       </div>
       <div className="flex items-center gap-4">
         <button className="bg-button-color text-wrap p-2 rounded-full text-2xl md:text-3xl relative hidden md:block">
@@ -28,7 +31,7 @@ async function Header() {
           <GoBell />
           <span className="size-4 rounded-full bg-red-600 absolute right-0 -top-1"></span>
         </button>
-
+       <ThemeSwitcher/>
         {currentUser && (
           <Link href={`/dashboard/${currentUser?.role.toLowerCase()}`}>
             <button className=" bg-gray-50 dark:bg-dark-mode dark:text-primary-color text-wrap p-2 rounded-full text-3xl relative d">
@@ -36,7 +39,7 @@ async function Header() {
             </button>
           </Link>
         )}
-        <ProfileImage image_url={currentUser?.profile_photo!} href="/profile" />
+        <ProfileImage image_url={currentUser?.profile_photo!} href={`/profile/${currentUser?.username}`} />
       </div>
     </header>
   );

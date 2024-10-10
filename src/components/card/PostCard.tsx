@@ -34,12 +34,12 @@ const PostCard = ({ currentUser, post }: IPostCard) => {
 
   const handelClick = () => {
     // If user is not logged in then navigate user to login page
-    if (!currentUser) {
-      return router.push('/auth/sign-in');
-    }
+    // if (!currentUser) {
+    //   return router.push('/auth/sign-in');
+    // }
 
     // If user is not verified then show package subscription pop up
-    else if (post.is_premium && !currentUser?.is_verified) {
+  if (post.is_premium && !currentUser?.is_verified) {
       return dispatch(toggleSubscriptionPurchaseModal(true));
     }
     return router.push(`/post/${post._id}`);

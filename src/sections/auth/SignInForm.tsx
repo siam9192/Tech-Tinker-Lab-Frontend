@@ -3,6 +3,7 @@ import Form from '@/components/form/Form';
 import FormInputWithIcon from '@/components/form/FormInputWithIcon';
 import { toggleLoadingLineComponent } from '@/redux/features/toggle.slice';
 import { signInUser } from '@/services/authService';
+import { getActivityInfo } from '@/utils/func';
 import { ZodValidations } from '@/utils/zodValidationSchame';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
@@ -17,18 +18,26 @@ interface ISignUpForm {
 }
 
 function SignInForm({ redirect_url }: ISignUpForm) {
+  
   const [error, setError] = useState('');
 
   const router = useRouter();
   const dispatch = useDispatch();
 
   const handelSubmit = async (values: FieldValues) => {
+  
     // Reset error message
     setError('');
     openLoadingLine();
-
+    
+   const activity =  await getActivityInfo()
+ const data = {
+  ...values,
+  activity
+ }
+ 
     try {
-      await signInUser(values);
+      await signInUser(data);
       if (redirect_url) {
         router.push(redirect_url);
       } else {

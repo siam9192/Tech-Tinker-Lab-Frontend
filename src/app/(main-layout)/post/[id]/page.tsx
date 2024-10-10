@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import { PageProps } from '../../../../../.next/types/app/layout';
 
@@ -5,21 +6,30 @@ import { getPostForRead } from '@/services/postService';
 import dynamic from 'next/dynamic';
 import PostInfo from '@/sections/post-details/PostInfo';
 import PostComments from '@/sections/post-details/PostComments';
-import PDFGenerateButton from '@/components/ui/PDFGenerateButton';
+import { useGetPostForRead } from '@/hooks/post.hook';
+
 
 const PostContent = dynamic(
   () => import('@/sections/post-details/PostContent'),
   { ssr: false },
 );
-
-async function PostDetailsPage({ params }: PageProps) {
+const PDFGenerateButton = dynamic(
+  () => import('@/components/ui/PDFGenerateButton'),
+  { ssr: false },
+);
+ function PostDetailsPage({ params }: PageProps) {
   const postId = params.id;
-  let post;
-  try {
-    post = await getPostForRead(postId);
-  } catch (error) {
-    return <h1>Something went wrong</h1>;
+  
+  const {data:post,isLoading,isFetching,error} = useGetPostForRead(postId)
+  if(isLoading||isFetching){
+    return <div className='text-center'>
+      <span className="loading loading-ring w-32 md:w-52 text-primary-color mt-40"></span>
+    </div>
   }
+  if(error){
+    return <h1 className='text-3xl dark:text-white font-medium'>{error?.message}</h1>
+  }
+
   const postInfoData = {
     id: post._id,
     author: post.author,
@@ -31,7 +41,7 @@ async function PostDetailsPage({ params }: PageProps) {
     <div>
       <div
         id="post-content"
-        className="p-5 bg-white space-y-5 shadow mt-5 mb-10"
+        className="p-5 bg-white dark:bg-dark-light space-y-5 shadow mt-5 mb-10"
       >
         <div className="text-end">
           <PDFGenerateButton />
@@ -45,6 +55,7 @@ async function PostDetailsPage({ params }: PageProps) {
       <PostInfo data={postInfoData} />
       <PostComments postId={postId} />
     </div>
+   
   );
 }
 

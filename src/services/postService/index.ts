@@ -27,6 +27,7 @@ export const getPostForRead = async (postId: string) => {
     const { data } = await axiosInstance.get(`/posts/user-read/${postId}`);
     return data.data as IPost;
   } catch (error: any) {
+    console.log(error?.response?.data?.message)
     throw new Error(error?.response?.data?.message || 'Some this went wrong');
   }
 };

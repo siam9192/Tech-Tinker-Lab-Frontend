@@ -11,6 +11,7 @@ function PostComments({ postId }: { postId: string }) {
   const [currentUser, setCurrentUser] = useState<IUser | null>(null);
   const [isUserLoading, setIsUserLoading] = useState(false);
   const { data, isLoading: isCommentsLoading } = useGetPostComments(postId);
+  
   const { data: userReactions, isLoading: isUserReactionsLoading } =
     useGetCurrentUserCommentReactions(postId);
 
@@ -26,7 +27,7 @@ function PostComments({ postId }: { postId: string }) {
   
 
   return (
-    <section className="bg-white dark:bg-dark-light shadow p-5 md:p-10 space-y-3 min-h-[20vh]">
+    <section className="bg-white dark:bg-dark-light dark:text-white shadow p-5 md:p-10 space-y-3 min-h-[20vh]">
       <h1 className="text-xl font-bold ">Comments ({comments?.length})</h1>
       {!isUserLoading && !isCommentsLoading && !isUserReactionsLoading ? (
         comments?.length ? (

@@ -41,8 +41,8 @@ const Form = ({
 
   const methods = useForm(formConfig);
 
-  const submit: SubmitHandler<FieldValues> = (data) => {
-    const status = onSubmit(data);
+  const submit: SubmitHandler<FieldValues> = async(data) => {
+    const status = await onSubmit(data);
     if (status === true && reset) {
       methods.reset();
     }

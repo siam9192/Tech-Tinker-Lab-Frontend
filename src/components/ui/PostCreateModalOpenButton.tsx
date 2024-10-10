@@ -2,15 +2,25 @@
 import React, { useState } from 'react';
 import { FaPlus } from 'react-icons/fa';
 import PostCreateForm from './PostCreateForm';
+import { useRouter } from 'next/navigation';
 
-function PostCreateModalOpenButton() {
+interface Props {
+  isUser:boolean
+}
+
+function PostCreateModalOpenButton({isUser}:Props) {
   const [isOpen, setIsOpen] = useState(false);
-
+  const router = useRouter()
   const closeModal = () => {
     setIsOpen(false);
   };
   const openModal = () => {
+  if(isUser){
     setIsOpen(true);
+  }
+  else{
+    router.push('/auth/sign-in')
+  }
   };
 
   return (

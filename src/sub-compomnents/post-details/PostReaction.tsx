@@ -64,7 +64,7 @@ function PostReaction({ data }: IPostReactionProps) {
               className="flex items-center gap-1 text-3xl hover:text-primary-color "
             >
               <span
-                className={`p-2 bg-gray-100 rounded-full ${vote_type === 'UP' ? 'text-primary-color' : ''}`}
+                className={`p-2 bg-gray-100 dark:bg-dark-mode rounded-full ${vote_type === 'UP' ? 'text-primary-color' : ''}`}
               >
                 <FaLongArrowAltUp />
               </span>
@@ -79,7 +79,7 @@ function PostReaction({ data }: IPostReactionProps) {
               className="flex items-center gap-1 text-3xl hover:text-primary-color "
             >
               <span
-                className={`p-2 bg-gray-100 rounded-full ${vote_type === 'DOWN' && 'text-primary-color'}`}
+                className={`p-2 bg-gray-100 dark:bg-dark-mode rounded-full ${vote_type === 'DOWN' && 'text-primary-color'}`}
               >
                 <FaLongArrowAltDown />
               </span>

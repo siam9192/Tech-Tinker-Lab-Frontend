@@ -1,20 +1,35 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 interface IPaginationProps {
   pages: number[];
   currentPage: number;
+  onChange:(page:number)=>void
 }
 
-const Pagination = ({ pages, currentPage }: IPaginationProps) => {
-  const [pageNumber, setPageNumber] = useState(currentPage);
-
+const Pagination = ({ pages, currentPage,onChange }: IPaginationProps) => {
+  const [pageNumber, setPageNumber] = useState(1);
+  
   const updatePageNumber = (num: number) => {
+   
     if (num > pages.length || 1 > num) {
-      return setPageNumber(1);
+     setPageNumber(1);
+     onChange(1)
     }
-    setPageNumber(num);
+    else {
+      setPageNumber(1);
+      onChange(1)
+    }
+    
   };
+ 
+  const changePage = (page:number)=>{
+   if(page<=pages.length){
+    setPageNumber(page)
+    onChange(page)
+   }
+  }
+
   return (
     <div className="flex select-none justify-center items-center gap-5 ">
       {/* left arrow */}
@@ -52,7 +67,7 @@ const Pagination = ({ pages, currentPage }: IPaginationProps) => {
         {pages.map((item) => (
           <div
             onClick={() => {
-              setPageNumber(item);
+              changePage(item);
             }}
             className={`cursor-pointer hover:scale-110 scale-100 transition-all duration-200 px-5 ${pageNumber === item ? ' bg-button-color text-white' : 'bg-white'} border-zinc-300  font-semibold text-gray-700   py-3 rounded-full`}
             key={item}

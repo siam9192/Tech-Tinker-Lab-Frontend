@@ -21,7 +21,7 @@ const UserDashboardRoutes = [
   },
   {
     title: 'Subscription',
-    href: '/dashboard/user/subscription',
+    href: '/dashboard/user/my-subscription',
     icon: PiPackageFill,
   },
 ];
