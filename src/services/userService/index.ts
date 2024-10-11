@@ -46,7 +46,7 @@ export const changeAccountPassword= async (d:any) => {
       );
       return data.data;
     } catch (error: any) {
-      console.log(error)
+    
        throw new Error(error.message)
     }
   }

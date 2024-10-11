@@ -34,7 +34,7 @@ const Posts = ({ searchParams }: PageProps) => {
   ];
 
   const { data, isLoading, isFetching, refetch } = useGetPostsQuery(params, {
-    // pollingInterval: 10000,
+    pollingInterval: 10000,
   });
   const posts = data?.data || [];
   const meta = data?.meta;
@@ -54,6 +54,7 @@ const Posts = ({ searchParams }: PageProps) => {
         !isFetching
       ) {
         setPage((prevPage) => prevPage + 1);
+        handelRefetch()
       }
     };
 
@@ -68,12 +69,12 @@ const Posts = ({ searchParams }: PageProps) => {
     getCurrentUserData().then((data) => setCurrentUser(data));
   }, []);
 
-  useEffect(() => {
-  if( pages.length >= page ){
-    refetch();
-  }
+  // useEffect(() => {
+  
    
-  }, [page]);
+  // }, [page]);
+
+
   
   useEffect(()=>{
         setPage(1)
@@ -81,14 +82,18 @@ const Posts = ({ searchParams }: PageProps) => {
         setPrevPosts([])
   },[searchParams])
   
+  function handelRefetch (){
+    if( pages.length >= page ){
+      refetch();
+    }
+  }
+
   useEffect(() => {
     if (!isLoading && !isFetching && posts.length) {
       setPrevPosts([...prevPosts, ...posts]);
     }
   }, [isLoading, isFetching]);
-useEffect(()=>{ 
-  console.log('Search param changed',searchParams)
-},[searchParams])
+
   return (
     <section className="py-5">
       {prevPosts.length ? (

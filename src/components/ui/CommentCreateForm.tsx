@@ -33,7 +33,7 @@ function CreateCommentForm({ postId, currentUser }: ICreateCommentFormProps) {
     setIsPosting(true);
     try {
       const res = await postComment(data);
-      console.log(res);
+   
       queryClient.invalidateQueries(['POST-COMMENTS']);
       successToast('Comment Posted successfully');
     } catch (error: any) {

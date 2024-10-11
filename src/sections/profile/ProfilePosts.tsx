@@ -10,7 +10,7 @@ function ProfilePosts({ username }: { username: string }) {
   const { data } = useGetProfilePosts(username);
   const { data: currentUser } = userGetCurrentUserDecode();
   const posts = data || [];
-  console.log(posts);
+  
   return (
     <section>
       <div className="grid  grid-cols-1 md:grid-cols-2 gap-5 md:gap-10">

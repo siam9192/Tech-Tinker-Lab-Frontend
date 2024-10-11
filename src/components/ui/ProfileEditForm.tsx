@@ -11,6 +11,7 @@ import { ZodValidations } from '@/utils/zodValidationSchame';
 import { UploadImage } from '@/utils/upload';
 import { updateProfile } from '@/services/profileService';
 import { errorToast, successToast } from '@/utils/toast';
+import { useQueryClient } from '@tanstack/react-query';
 
 interface IProfileEditForm {
   successFn: () => void;
@@ -26,6 +27,8 @@ function ProfileEditForm({ successFn }: IProfileEditForm) {
   const [isUpdating, setIsUpdating] = useState(false);
   const { data: currentUser, isLoading: isCurrentUserLoading } =
     userGetCurrentUserProfile();
+  
+    const queryClient = useQueryClient()
 
   let coverPhoto;
   let profilePhoto;
@@ -68,6 +71,7 @@ function ProfileEditForm({ successFn }: IProfileEditForm) {
   };
 
   const handelSubmit = async (values: FieldValues) => {
+    
     const data = {
       personal_details: {
         ...values,
@@ -87,6 +91,7 @@ function ProfileEditForm({ successFn }: IProfileEditForm) {
 
       const res = await updateProfile(data);
       successToast('Profile edited successfully');
+      queryClient.invalidateQueries(['PROFILE'])
       successFn();
     } catch (error: any) {
       errorToast(error.message);
@@ -168,7 +173,7 @@ function ProfileEditForm({ successFn }: IProfileEditForm) {
         />
         <div className="text-end">
           {isUpdating ? (
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 dark:text-white">
               <span className="font-medium text-xl">Updating</span>
               <span className="loading loading-dots loading-md"></span>
             </div>

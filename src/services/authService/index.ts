@@ -45,13 +45,12 @@ export const getCurrentUser = async () => {
 
 export const userLogout = async (data:any) => {
   
- 
  try {
-  await axiosInstance.post('/auth/logout',data)
+ 
   cookies().delete('accessToken');
   cookies().delete('refreshToken');
- } catch (error) {
-  
+ } catch (error:any) {
+  throw new Error(error.message)
  }
 };
 

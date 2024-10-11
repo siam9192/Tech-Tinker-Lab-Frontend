@@ -2,6 +2,7 @@
 import axiosInstance from '@/lib/axios-instance';
 
 export const followUser = async (bodyData: any) => {
+  
   try {
     const { data } = await axiosInstance.post('/followers/follow', bodyData);
     return data;

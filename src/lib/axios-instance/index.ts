@@ -18,12 +18,17 @@ axiosInstance.interceptors.request.use(function (config) {
 axiosInstance.interceptors.response.use(function(response){
   return response
 },async function(error){
+  console.log(error)
   const config = error.config;
-    console.log(error)
+    
     if (error?.response?.status === 401 && !config?.sent) {
+     
       config.sent = true;
       const res = await getNewAccessToken();
-      const accessToken = res.data.accessToken;
+      const accessToken = res?.data?.accessToken;
+      if(!accessToken){
+        Promise.reject(error)
+      }
       config.headers["Authorization"] = `Bearer ${accessToken}`;
       cookies().set("accessToken", accessToken);
       return axiosInstance(config);

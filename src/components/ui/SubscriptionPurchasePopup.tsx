@@ -7,6 +7,7 @@ import { IoCheckmarkDoneSharp } from 'react-icons/io5';
 import { subscribePackage } from '@/services/subscriptionService';
 import { toggleSubscriptionPurchaseModal } from '@/redux/features/toggle.slice';
 import { usePathname } from 'next/navigation';
+import { errorToast } from '@/utils/toast';
 
 function SubscriptionPurchasePopup() {
   const isOpen = useAppSelector(
@@ -25,9 +26,13 @@ function SubscriptionPurchasePopup() {
       package_id: '66faf58d5908139fae191761',
       redirect_url,
     };
-    const data = await subscribePackage(subscriptionData);
 
-    window.location.href = data.checkout_url;
+    try {
+      const data = await subscribePackage(subscriptionData);
+       window.location.href = data.checkout_url;
+    } catch (error:any) {
+     errorToast(error.message)
+    }
   };
   const closeModal = () => {
     dispatch(toggleSubscriptionPurchaseModal(false));

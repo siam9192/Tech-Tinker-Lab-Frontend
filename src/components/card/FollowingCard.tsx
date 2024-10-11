@@ -9,7 +9,7 @@ interface IFollowingCardProps {
 function FollowingCard({ user }: IFollowingCardProps) {
   return (
     <Link href={`/profile/${user.username}`}>
-      <div className="flex justify-between items-center hover:bg-gray-100 p-2 hover:cursor-pointer">
+      <div className="flex justify-between items-center hover:bg-gray-100 dark:hover:bg-dark-mode p-2 hover:cursor-pointer">
         <div className="flex items-center gap-5  dark:text-white">
           <img
             src={user.profile_photo || default_cover_photo}

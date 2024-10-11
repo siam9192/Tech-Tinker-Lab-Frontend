@@ -20,9 +20,12 @@ function DashboardSidebar({ userRole,userData }: DashboardSideBarProps) {
   switch (userRole) {
     case 'USER':
       routes = UserDashboardRoutes;
+      break
     case 'ADMIN':
       routes = AdminDashboardRoutes;
+      break
   }
+  
   return (
     <div className="p-10 bg-primary-color h-full w-full flex flex-col justify-between">
       {/* Management */}

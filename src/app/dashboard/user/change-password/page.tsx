@@ -22,11 +22,13 @@ function page() {
         const data = {current_password:values.current_password,new_password:values.new_password}
        await  changeAccountPassword(data)
        successToast('Password Changed successfully')
+       setIsLoading(false)
        return true
        } catch (error:any) {
+        setIsLoading(false)
         setError(error.message)
        }
-       setIsLoading(false)
+      
     }
   return (
    <div className='flex  justify-center items-center h-[90vh]'>

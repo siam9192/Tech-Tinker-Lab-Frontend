@@ -20,7 +20,7 @@ function ProfileFollowing({ username }: { username: string }) {
           ))}
         </div>
       ) : (
-        <h1 className="mt-10 text-2xl text-center">No One</h1>
+        <h1 className="mt-10 text-2xl text-center dark:text-white">No One</h1>
       )}
     </section>
   );

@@ -1,18 +1,22 @@
 'use client';
 import { userLogout } from '@/services/authService';
 import { getActivityInfo } from '@/utils/func';
+import { usePathname } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import React from 'react';
 import { BiLogOutCircle } from 'react-icons/bi';
 interface ILogoutButtonProps {
   successFn?: () => void;
 }
 function LogoutButton({ successFn }: ILogoutButtonProps) {
-  
+  const router = useRouter()
+
   const logout = async () => {
     const activity = await getActivityInfo()
  
     await userLogout(activity);
     if (successFn) {
+      
       successFn();
     }
   };

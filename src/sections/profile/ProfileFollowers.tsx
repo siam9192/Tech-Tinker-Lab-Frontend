@@ -6,6 +6,7 @@ import React from 'react';
 
 function ProfileFollowers({ username }: { username: string }) {
   const { data: followers } = useGetProfileFollowers(username);
+ 
   return (
     <section className="">
       <h1 className="text-end  font-bold dark:text-white">
@@ -20,7 +21,7 @@ function ProfileFollowers({ username }: { username: string }) {
           ))}
         </div>
       ) : (
-        <h1 className="mt-10 text-2xl text-center">No Followers</h1>
+        <h1 className="mt-10 text-2xl text-center dark:text-white">No Followers</h1>
       )}
     </section>
   );

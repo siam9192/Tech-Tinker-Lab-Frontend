@@ -2,7 +2,9 @@ import DashboardOverviewCard from '@/components/card/DashboardOverviewCard';
 import { getCurrentUserData } from '@/services/authService';
 import { getCurrentUserOverview } from '@/services/overviewService';
 import React from 'react';
+import { FaMessage } from 'react-icons/fa6';
 import { IoAlbumsOutline } from 'react-icons/io5';
+import { MdAddReaction } from 'react-icons/md';
 import { PiPackageFill } from 'react-icons/pi';
 import { RiMoneyDollarCircleLine } from 'react-icons/ri';
 
@@ -18,6 +20,7 @@ async function page() {
     currentUser?.personal_details.name.first_name +
     ' ' +
     (currentUser?.personal_details.name.last_name || '');
+    
   return (
     <div>
       <h1 className="text-4xl font-bold dark:text-white">
@@ -35,7 +38,7 @@ async function page() {
         <DashboardOverviewCard
           data={{
             title: 'Total Reactions',
-            icon: IoAlbumsOutline,
+            icon: MdAddReaction,
             value: overviewData?.total_reaction || 0,
           }}
         />
@@ -48,11 +51,9 @@ async function page() {
         />
         <DashboardOverviewCard
           data={{
-            title: 'Subscription',
-            icon: PiPackageFill,
-            value: overviewData?.subscription_ends_in
-              ? overviewData?.subscription_ends_in
-              : 'No Subscription',
+            title: 'Total Comment',
+            icon: FaMessage,
+            value:overviewData?.total_comment||0,
           }}
         />
       </div>

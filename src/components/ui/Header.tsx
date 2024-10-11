@@ -39,7 +39,9 @@ async function Header() {
             </button>
           </Link>
         )}
-        <ProfileImage image_url={currentUser?.profile_photo!} href={`/profile/${currentUser?.username}`} />
+      {
+        currentUser &&  <ProfileImage image_url={currentUser?.profile_photo!} isVerified={currentUser?.is_verified} href={`/profile/${currentUser?.username}`} />
+      }
       </div>
     </header>
   );

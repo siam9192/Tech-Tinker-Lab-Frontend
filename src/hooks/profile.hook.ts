@@ -3,6 +3,7 @@ import {
   getProfileFollowings,
   getProfileFollowStatus,
   getProfilePosts,
+  getUserProfile,
 } from '@/services/profileService';
 import { IPost } from '@/types';
 import { IUser } from '@/types/user.type';
@@ -33,5 +34,13 @@ export const useGetProfileFollowings = (username: string) => {
   return useQuery<IUser[], Error>({
     queryKey: ['PROFILE-FOLLOWINGS'],
     queryFn: async () => await getProfileFollowings(username),
+  });
+};
+
+
+export const useGetUserProfile  =  (username: string) => {
+  return useQuery<IUser, Error>({
+    queryKey: ['PROFILE'],
+    queryFn: async () => await getUserProfile(username),
   });
 };

@@ -42,9 +42,9 @@ function PostAnalysis({ postId }: IPostAnalysisProps) {
       icon: FaBookReader,
     },
   ];
-
+  
   const labels =
-    data?.readers_summery.map((item) => {
+    data?.readers_summery?.map((item) => {
       let label = item.month?.slice(0, 3) || item.day;
       if (item.upcoming) {
         label += '(Upcoming)';

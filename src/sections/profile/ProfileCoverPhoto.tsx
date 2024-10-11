@@ -1,3 +1,4 @@
+'use client';
 import { default_cover_photo } from '@/utils/constant';
 import React from 'react';
 

@@ -19,12 +19,12 @@ export default function Provider({ children }: TProvider) {
     let mode = localStorage.getItem('mode');
    
     if (!mode) {
-      localStorage.setItem('mode', 'light');
+      localStorage.setItem('mode', 'night');
     }
     mode = localStorage.getItem('mode');
   
     if (!modes.includes(mode!)) {
-      localStorage.setItem('mode', 'light');
+      localStorage.setItem('mode', 'night');
     }
 
     if (mode === 'night') {

@@ -1,19 +1,23 @@
-import { getUserProfile } from '@/services/profileService';
+'use client'
 import ProfileCoverPhoto from '@/sections/profile/ProfileCoverPhoto';
 import React, { use } from 'react';
 import { PageProps } from '../../../../../.next/types/app/layout';
 import ProfileInfo from '@/sections/profile/ProfileInfo';
 import ProfileTabs from '@/sub-compomnents/profile/ProfileTabs';
+import { useGetUserProfile } from '@/hooks/profile.hook';
 
-async function page({ params }: PageProps) {
-  let profileData;
+ function page({ params }: PageProps) {
+ 
   const username = params.username;
-  try {
-    if (username) {
-      profileData = await getUserProfile(username);
-    }
-  } catch (error) {
-    return <h1></h1>;
+  const {data:profileData,isLoading,error} = useGetUserProfile(username)
+
+  if(isLoading){
+    return <div className='text-center'>
+      <span className="loading loading-ring w-32 md:w-52 text-primary-color mt-40"></span>
+    </div>
+  }
+  else if (error){
+    return <h1>{error.message}</h1>
   }
 
   return (

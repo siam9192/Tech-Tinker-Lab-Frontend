@@ -31,7 +31,7 @@ function ProfileTabs({ username }: { username: string }) {
         {tabs.map((tab, index) => (
           <button
             onClick={() => setActiveTab(index)}
-            className={`text-xl md:text-2xl font-medium ${activeTab === index ? 'text-primary-color' : ''}`}
+            className={`text-xl md:text-2xl font-medium ${activeTab === index ? 'text-primary-color' : 'dark:text-white'} `}
           >
             {tab.title}
           </button>

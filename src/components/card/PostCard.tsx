@@ -2,7 +2,6 @@
 import { IPost } from '@/types';
 import { formatTimeAgo } from '@/utils/func';
 import React, { useEffect, useRef } from 'react';
-import { AiFillDislike, AiFillLike } from 'react-icons/ai';
 import {
   FaBookReader,
   FaLongArrowAltDown,
@@ -34,12 +33,13 @@ const PostCard = ({ currentUser, post }: IPostCard) => {
 
   const handelClick = () => {
     // If user is not logged in then navigate user to login page
-    // if (!currentUser) {
-    //   return router.push('/auth/sign-in');
-    // }
+    if (!currentUser) {
+      return router.push('/auth/sign-in');
+    }
+       console.log(currentUser)
 
     // If user is not verified then show package subscription pop up
-  if (post.is_premium && !currentUser?.is_verified) {
+    if (currentUser.role === 'USER' && post.is_premium && !currentUser?.is_verified) {
       return dispatch(toggleSubscriptionPurchaseModal(true));
     }
     return router.push(`/post/${post._id}`);

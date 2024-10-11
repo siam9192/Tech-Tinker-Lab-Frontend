@@ -1,8 +1,8 @@
 import { IRoute } from '@/types/global.type';
-import { FaUser, FaUsers } from 'react-icons/fa';
+import { FaHeadset, FaUser, FaUsers } from 'react-icons/fa';
 import { HiMiniHome } from 'react-icons/hi2';
 import { LuLayoutDashboard } from 'react-icons/lu';
-
+import { FcAbout } from "react-icons/fc";
 const UserRoutes: IRoute[] = [
   {
     title: 'Home',
@@ -23,6 +23,16 @@ const UserRoutes: IRoute[] = [
     title: 'Dashboard',
     href: '/dashboard',
     icon: LuLayoutDashboard,
+  },
+  {
+    title: 'About Us',
+    href: '/about-us',
+    icon: FcAbout,
+  },
+  {
+    title: 'Contact Us',
+    href: '/contact-us',
+    icon: FaHeadset,
   },
 ];
 

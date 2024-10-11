@@ -134,7 +134,7 @@ const PostCreateForm = ({ successFn }: IPostCreateForm) => {
   return (
     <div>
       <Form
-        className="space-y-5"
+        className="space-y-5 dark:text-white"
         reset={true}
         onSubmit={handelSubmit}
         resolver={zodResolver(ZodValidations.postFormValidation)}
@@ -180,7 +180,7 @@ const PostCreateForm = ({ successFn }: IPostCreateForm) => {
               type="checkbox"
               className="size-6 accent-black mb-2"
             />
-            <h5 className="font-bold text-xl">Set as premium</h5>
+            <h5 className="font-bold text-xl dark:text-white">Set as premium</h5>
           </div>
         </div>
         <div className="flex justify-end">

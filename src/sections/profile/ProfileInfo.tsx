@@ -1,20 +1,24 @@
+'use client';
 import EditProfileButton from '@/components/ui/EditProfileButton';
 import FollowButton from '@/components/ui/FollowButton';
 import { getCurrentUser } from '@/services/authService';
 import { IUser } from '@/types/user.type';
 import { default_profile_photo } from '@/utils/constant';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 interface IProfile {
   profile: IUser;
 }
 
-async function ProfileInfo({ profile }: IProfile) {
+ function ProfileInfo({ profile }: IProfile) {
+  const [currentUser,setCurrentUser] = useState<any|null>(null)
   const personal_details = profile.personal_details;
   const full_name =
     personal_details.name.first_name + ' ' + personal_details.name.last_name ||
     '';
-  const currentUser = await getCurrentUser();
+  useEffect(()=>{
+   getCurrentUser().then((data)=>setCurrentUser(data))
+  },[])
 
   return (
     <section className="space-y-4">
@@ -35,7 +39,7 @@ async function ProfileInfo({ profile }: IProfile) {
           </div>
         )}
 
-        <div className="space-y-1">
+        <div className="space-y-1 dark:text-white">
           <h1 className="text-3xl font-bold dark:text-white">
             {profile.username}
           </h1>
@@ -48,7 +52,7 @@ async function ProfileInfo({ profile }: IProfile) {
             <FollowButton username={profile.username} userId={profile._id} />
           )}
         </div>
-        <p>{profile.personal_details.about || ''}</p>
+        <p className='dark:text-white'>{profile.personal_details.about || ''}</p>
       </div>
       <div className="grid grid-cols-3 gap-3">
         <div className="space-y-2 text-center dark:text-white">

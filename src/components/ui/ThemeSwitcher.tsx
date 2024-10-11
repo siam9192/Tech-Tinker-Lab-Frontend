@@ -3,13 +3,13 @@ import React, { useEffect, useState } from 'react'
 import { CiLight } from 'react-icons/ci';
 type TMode = 'light' | 'night';
 function ThemeSwitcher() {
-    const [mode, setMode] = useState<TMode>('light');
+    const [mode, setMode] = useState<TMode>('night');
     useEffect(() => {
       const storedMode = localStorage.getItem('mode');
      
       if (!storedMode) {
         setMode('light');
-        localStorage.setItem('mode', 'light');
+        localStorage.setItem('mode', 'night');
       } else {
         setMode(storedMode as TMode);
       }

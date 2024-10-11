@@ -3,7 +3,6 @@ import React, { useRef, useState } from 'react';
 import ReactQuill, { UnprivilegedEditor } from 'react-quill';
 import 'react-quill/dist/quill.snow.css'; // import styles
 import './TextEditor.css';
-import { Range } from 'postcss/lib/node';
 import { Editor } from '@tinymce/tinymce-react';
 
 interface ITextEditorProps {
@@ -15,7 +14,6 @@ function TextEditor({ onChange }: ITextEditorProps) {
 
   const handelEditorChange = (value: string) => {
     onChange(value);
-    console.log(value);
   };
 
   return (

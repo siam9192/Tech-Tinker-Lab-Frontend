@@ -8,6 +8,7 @@ import { errorToast, successToast } from '@/utils/toast';
 import { deletePost } from '@/services/postService';
 import EditPost from '@/sections/dashboard/my-posts/EditPost';
 import PostAnalysisModal from '@/sub-compomnents/dashboard/my-posts/PostAnalysisModal';
+import Link from 'next/link';
 
 interface IPostCardProps {
   post: IPost;
@@ -69,6 +70,9 @@ function MyPostCard({ post }: IPostCardProps) {
       </div>
       <div className="mt-3 flex justify-end">
         <div className="flex items-center gap-2">
+         <Link href={`/post/${post._id}`}>
+         <button className='px-4 py-2 bg-blue-600 rounded-full'>View Post</button>
+         </Link>
           <PostAnalysisModal postId={post._id} />
           <EditPost postId={post._id} />
 
