@@ -18,7 +18,6 @@ const Sidebar = () => {
   
 
   useEffect(() => {
-    // getCurrentUser().then((res) => setCurrentUser(res));
     getCurrentUserData().then(res=>{
       setCurrentUser(res)
       setIsUserLoading(false)
@@ -27,6 +26,7 @@ const Sidebar = () => {
 
   const logoutSuccessFn = () => {
     setCurrentUser(null);
+    window.location.pathname = '/'
   };
 
   if(isLoading){

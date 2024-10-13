@@ -52,11 +52,14 @@ function SignUpForm({ redirect_url }: ISignUpForm) {
    
     try {
       const res = await signUpUser(userData);
+     if(!res.success){
+      throw new Error(res.message)
+     }
       if (redirect_url) {
-        router.push(redirect_url);
-      } else {
-        router.push('/');
-      }
+        window.location.pathname = redirect_url
+        } else {
+          window.location.pathname = '/';
+        }
       return true;
     } catch (error: any) {
       setError(error.message);
@@ -107,11 +110,13 @@ function SignUpForm({ redirect_url }: ISignUpForm) {
           icon={BiLock}
           name="password"
           placeholder="Password"
+          type='password'
         />
         <FormInputWithIcon
           icon={BiLock}
           name="confirm_password"
           placeholder="Confirm Password"
+          type='password'
         />
         <div className="mt-2">
           <button

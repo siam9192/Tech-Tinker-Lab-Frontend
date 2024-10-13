@@ -15,8 +15,9 @@ export const signUpUser = async (userData: FieldValues) => {
     }
     return data;
   } catch (error: any) {
-    throw new Error(error?.response?.data?.message || 'Some this went wrong');
+    return error.response?.data
   }
+  
 };
 
 export const signInUser = async (userData: FieldValues) => {
@@ -32,7 +33,7 @@ export const signInUser = async (userData: FieldValues) => {
     }
     return data;
   } catch (error: any) {
-    throw new Error(error?.response?.data?.message);
+    return error.response?.data
   }
 };
 
@@ -44,9 +45,8 @@ export const getCurrentUser = async () => {
 };
 
 export const userLogout = async (data:any) => {
-  
  try {
- 
+  await axiosInstance.post('/auth/logout',data)
   cookies().delete('accessToken');
   cookies().delete('refreshToken');
  } catch (error:any) {

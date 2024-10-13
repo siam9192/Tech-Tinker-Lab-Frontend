@@ -16,7 +16,6 @@ function LogoutButton({ successFn }: ILogoutButtonProps) {
  
     await userLogout(activity);
     if (successFn) {
-      
       successFn();
     }
   };

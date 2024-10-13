@@ -1,8 +1,10 @@
-import SignUpForm from '@/sections/auth/SignUpForm';
+
 import Link from 'next/link';
 import React from 'react';
 import { PageProps } from '../../../../.next/types/app/layout';
+import dynamic from 'next/dynamic';
 
+const SignUpForm = dynamic(()=>import('@/sections/auth/SignUpForm'),{ssr:false})
 const SignUpPage = ({ searchParams }: PageProps) => {
   return (
     <div>

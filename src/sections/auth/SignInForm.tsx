@@ -37,11 +37,15 @@ function SignInForm({ redirect_url }: ISignUpForm) {
  }
  
     try {
-      await signInUser(data);
+    const res =   await signInUser(data);
+
+     if(!res.success){
+      throw new Error(res.message)
+     }
       if (redirect_url) {
-        router.push(redirect_url);
+      window.location.pathname = redirect_url
       } else {
-        router.push('/');
+        window.location.pathname = '/';
       }
       return true;
     } catch (error: any) {

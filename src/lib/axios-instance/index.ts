@@ -18,7 +18,7 @@ axiosInstance.interceptors.request.use(function (config) {
 axiosInstance.interceptors.response.use(function(response){
   return response
 },async function(error){
-  console.log(error)
+ 
   const config = error.config;
     
     if (error?.response?.status === 401 && !config?.sent) {

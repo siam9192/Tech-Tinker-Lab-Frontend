@@ -3,7 +3,7 @@ import { FaHeadset, FaUser, FaUsers } from 'react-icons/fa';
 import { HiMiniHome } from 'react-icons/hi2';
 import { LuLayoutDashboard } from 'react-icons/lu';
 import { FcAbout } from "react-icons/fc";
-const UserRoutes: IRoute[] = [
+const AdminRoutes: IRoute[] = [
   {
     title: 'Home',
     href: '/',
@@ -36,4 +36,4 @@ const UserRoutes: IRoute[] = [
   },
 ];
 
-export default UserRoutes;
+export default AdminRoutes;
